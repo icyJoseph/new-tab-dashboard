@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 function htmlPlugin({ template, chunks, filename }) {
   return new HtmlWebpackPlugin({
@@ -11,11 +12,11 @@ function htmlPlugin({ template, chunks, filename }) {
 
 module.exports = {
   entry: {
-    newtab: path.join(__dirname, "extension/src/newtab.js"),
-    popup: path.join(__dirname, "extension/src/popup.js")
+    newtab: path.join(__dirname, "src/newtab.js"),
+    popup: path.join(__dirname, "src/popup.js")
   },
   output: {
-    path: path.join(__dirname, "extension/dist"),
+    path: path.join(__dirname, "extension"),
     filename: "static/js/[name].[chunkhash:8].js",
     chunkFilename: "static/js/[name].[chunkhash:8].chunk.js"
   },
@@ -38,15 +39,27 @@ module.exports = {
   },
   plugins: [
     htmlPlugin({
-      template: "extension/src/popup.html",
+      template: "src/popup.html",
       chunks: ["popup"],
       filename: "popup.html"
     }),
     htmlPlugin({
-      template: "extension/src/newtab.html",
+      template: "src/newtab.html",
       chunks: ["newtab"],
       filename: "newtab.html"
-    })
+    }),
+    new CopyPlugin([
+      {
+        from: "src/icon_128.png",
+        to: "icon_128.png",
+        toType: "file"
+      },
+      {
+        from: "src/manifest.json",
+        to: "manifest.json",
+        toType: "file"
+      }
+    ])
   ],
   resolve: {
     extensions: [".js", ".jsx", ".png"]
