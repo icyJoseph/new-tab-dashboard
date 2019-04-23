@@ -1,7 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Store } from "webext-redux";
+import { Provider } from "context-hook-provider";
+
+import Add from "./containers/Add";
 import "./popup.css";
 
-const App = () => <div>Pop Up</div>;
+const store = new Store();
 
-ReactDOM.render(<App />, document.getElementById("root"));
+store.ready().then(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <div>PopUp</div>
+      <Add />
+    </Provider>,
+    document.getElementById("root")
+  );
+});
