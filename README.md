@@ -1,7 +1,10 @@
 # Dashboard on Chrome New Tab
 
-Work in progress.
+Includes:
 
-TODO: Copy CSS files into own chunks
-TODO: Copy manifest to dist
-TODO: Copy icon to dist
+- `new tab` view
+- `popup` view
+
+The pop up allows the user to store the current window url.
+
+The new tab view, displays a dashboard with saved urls, state of projects, and other data.
