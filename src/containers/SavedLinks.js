@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import List from "../components/List";
-import { State } from "context-hook-provider";
+import { useUrls } from "../customHooks";
 
 export function SavedLinks() {
-  const {
-    state: { urls }
-  } = useContext(State);
+  const urls = useUrls();
   return (
     <List items={urls} renderer={({ id, url }) => <li key={id}>{url}</li>} />
   );
