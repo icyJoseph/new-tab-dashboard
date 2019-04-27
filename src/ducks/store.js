@@ -1,5 +1,8 @@
-export const ADD_URL = "add -> url";
-export const REMOVE_URL = "remove -> url";
+export const DELETE = "remove url";
+export const SAVE = "save url";
+export const GET_ALL = "get all";
+export const LOAD_ALL = "load all";
+export const STORE_CHANGE = "store change";
 
 const initialState = {
   urls: []
@@ -7,13 +10,9 @@ const initialState = {
 
 export function reducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_URL:
-      return { ...state, urls: [...state.urls, action.payload] };
-    case REMOVE_URL:
-      return {
-        ...state,
-        urls: state.urls.filter(({ id }) => id !== action.payload)
-      };
+    case LOAD_ALL:
+    case STORE_CHANGE:
+      return { ...state, urls: action.payload };
     default:
       return state;
   }

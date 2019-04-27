@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { State } from "context-hook-provider";
 import Button from "../components/Button";
-import { useAddUrl } from "../customHooks";
+import { useSave } from "../customHooks";
 
 export function Add() {
   const [tabs, setTabs] = useState([]);
-  const adder = useAddUrl();
+  const save = useSave();
 
-  const add = () => {
+  const callback = () => {
     const [{ url }] = tabs;
-    return url && adder({ id: url, url });
+    return url && save({ id: url, url });
   };
 
   useEffect(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      console.log(tabs);
-      return setTabs(tabs);
-    });
+    chrome.tabs.query({ active: true, currentWindow: true }, tabs =>
+      setTabs(tabs)
+    );
   }, []);
 
-  return <Button text="add" callback={add} />;
+  return <Button text="save" callback={callback} />;
 }
 
 export default Add;
