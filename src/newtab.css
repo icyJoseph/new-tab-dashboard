@@ -9,9 +9,8 @@ body {
   padding: 0;
   color: var(--secondary);
   background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -19,4 +18,54 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+header {
+  text-align: center;
+  margin: 1em;
+}
+
+h1 {
+  font-weight: 200;
+  font-size: 4em;
+}
+
+.new-tab {
+  padding: 0 5%;
+}
+
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+  margin: 0.5em;
+  justify-content: center;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  margin: 0 1em;
+  min-width: 300px;
+  max-width: 300px;
+  align-items: center;
+  box-shadow: 1px 1px 3px 1px rgba(255, 255, 255, 0.3);
+}
+
+.list-item > div + div {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.list-item > div + div > div > img {
+  width: 32px;
+  height: 32px;
+}
+
+.sub-header {
+  font-size: 2em;
+  margin: 0.15em;
+  font-weight: 300;
 }

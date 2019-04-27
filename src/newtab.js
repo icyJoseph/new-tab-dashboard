@@ -4,15 +4,19 @@ import { Store } from "webext-redux";
 import { Provider } from "context-hook-provider";
 
 import SavedLinks from "./containers/SavedLinks";
+import Header from "./components/Header";
 import "./newtab.css";
+import "./common.css";
 
 const store = new Store();
 
 store.ready().then(() => {
   ReactDOM.render(
     <Provider store={store}>
-      <div>New Tab</div>
-      <SavedLinks />
+      <div className="new-tab">
+        <Header />
+        <SavedLinks />
+      </div>
     </Provider>,
     document.getElementById("root")
   );

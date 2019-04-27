@@ -19,7 +19,7 @@ const getURLs = callback =>
 const addURLsChangeListener = listener =>
   chrome.storage.onChanged.addListener(listener);
 
-const URLs = store => next => {
+const middleware = store => next => {
   // TODO: move out
   const changeListener = ({ urls: { newValue } }) => {
     // when a change is detected, dispatch that to the store
@@ -43,7 +43,7 @@ const URLs = store => next => {
       if (exists) {
         // dispatch already saved
       }
-      if (newTab) {
+      if (isNewTab) {
         // dispatch won't save new tab
       }
 
@@ -61,6 +61,6 @@ const URLs = store => next => {
   };
 };
 
-const reduxStore = createStore(reducer, undefined, applyMiddleware(URLs));
+const reduxStore = createStore(reducer, undefined, applyMiddleware(middleware));
 
 wrapStore(reduxStore);
