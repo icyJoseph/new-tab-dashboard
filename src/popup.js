@@ -13,9 +13,6 @@ store.ready().then(() => {
   ReactDOM.render(
     <Provider store={store}>
       <div className="pop-up">
-        <div>
-          <h4 className="pop-up-header">Save?</h4>
-        </div>
         <Add />
       </div>
     </Provider>,
