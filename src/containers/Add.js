@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useReducer, useEffect } from "react";
 import { State } from "context-hook-provider";
 import Button from "../components/Button";
 import Icon from "../components/Icon";
@@ -6,26 +6,28 @@ import { useSave, useAlreadySaved } from "../customHooks";
 import addLink from "../assets/add-link.png";
 import check from "../assets/check.png";
 
-export function Add() {
-  const [ready, setReady] = useState(false);
-  const [url, setURL] = useState([]);
-  const save = useSave();
-  const alreadySaved = useAlreadySaved(url);
+const initialState = { ready: false };
+const reducer = (state, nextState) => ({ ...state, ...nextState });
 
-  const callback = () => save({ id: url, url, timestamp: Date.now() });
+export function Add() {
+  const [state, setState] = useReducer(reducer, initialState);
+  const { url: current, ready } = state;
+  const alreadySaved = useAlreadySaved(current);
+  const save = useSave();
+
+  const callback = () => save({ ...state, timestamp: Date.now() });
 
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      const [{ url }] = tabs;
-      setURL(url);
+      const [{ url, title }] = tabs;
+      setState({ id: url, url, title, ready: true });
     });
   }, []);
 
   if (alreadySaved) {
     return <Icon icon={check} />;
   }
-
-  return url && <Button type={addLink} callback={callback} />;
+  return ready && <Button type={addLink} callback={callback} />;
 }
 
 export default Add;

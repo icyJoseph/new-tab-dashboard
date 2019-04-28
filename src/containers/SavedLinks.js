@@ -21,10 +21,10 @@ export function SavedLinks() {
       </div>
       <List
         items={urls}
-        renderer={({ id, url }) => (
+        renderer={({ id, url, title }) => (
           <div key={id} className="list-item">
             <div className="url-container">
-              <p className="url-text">{url}</p>
+              <p className="url-text">{title || url}</p>
             </div>
             <div>
               <Button type={openLink} callback={openURL(url)} />
