@@ -8,8 +8,6 @@ import reducer, {
   STORE_CHANGE
 } from "./ducks/store";
 
-const NEW_TAB = "chrome://newtab/";
-
 // TODO: move to API folder
 const storeURLs = urls => chrome.storage.local.set({ urls });
 
@@ -39,15 +37,8 @@ const middleware = store => next => {
       const { urls = [] } = store.getState();
       const { id, url } = action.payload;
       const exists = urls.find(url => url.id === id);
-      const isNewTab = url === NEW_TAB;
-      if (exists) {
-        // dispatch already saved
-      }
-      if (isNewTab) {
-        // dispatch won't save new tab
-      }
 
-      if (!exists && !isNewTab) {
+      if (!exists) {
         storeURLs([...urls, action.payload]);
       }
     }
