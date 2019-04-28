@@ -10,6 +10,11 @@ export function useUrls() {
   return state.urls;
 }
 
+export function useAlreadySaved(currentUrl) {
+  const urls = useUrls();
+  return urls.some(({ url }) => url === currentUrl);
+}
+
 // Actions
 export function useSave() {
   const { dispatch } = useContext(State);
