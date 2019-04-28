@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import List from "../components/List";
 import Button from "../components/Button";
 import { useUrls, useGetAll, useDelete } from "../customHooks";
+import { openURL } from "../chrome-utils";
 import openLink from "../assets/open-link.png";
 import deleteLink from "../assets/delete-link.png";
-
-const openURL = newURL => () => chrome.tabs.create({ url: newURL });
 
 export function SavedLinks() {
   const urls = useUrls();
