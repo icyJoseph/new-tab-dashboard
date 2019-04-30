@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import List from "../components/List";
 import Button from "../components/Button";
 import { useUrls, useGetAll, useDelete } from "../customHooks";
@@ -10,17 +10,31 @@ export function SavedLinks() {
   const urls = useUrls();
   const getSaved = useGetAll();
 
+  const [query, setQuery] = useState("");
+
   useEffect(() => {
     getSaved();
   }, []);
+
+  const handleChange = e => {
+    e.preventDefault();
+    setQuery(e.target.value);
+  };
+
+  const filtered = urls.filter(url =>
+    url.title.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
     <>
       <div>
         <h3 className="sub-header">Saved Links</h3>
       </div>
+      <div className="input-field-container">
+        <input className="input-field" value={query} onChange={handleChange} />
+      </div>
       <List
-        items={urls}
+        items={filtered}
         renderer={({ id, url, title }) => (
           <div key={id} className="list-item">
             <div className="url-container">

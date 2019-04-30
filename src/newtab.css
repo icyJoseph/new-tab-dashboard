@@ -102,3 +102,21 @@ h1 {
 .favorites-item:hover {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3), 0 -1px 5px 0 rgba(0, 0, 0, 0.3);
 }
+
+.input-field-container {
+  display: flex;
+  justify-content: center;
+}
+
+.input-field {
+  border: none;
+  border-bottom: 1px solid var(--secondary);
+  background: transparent;
+  font-size: 1.5em;
+  color: var(--secondary);
+  text-align: center;
+}
+
+.input-field:focus {
+  outline: none;
+}
