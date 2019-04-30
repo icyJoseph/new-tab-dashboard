@@ -31,7 +31,12 @@ export function SavedLinks() {
         <h3 className="sub-header">Saved Links</h3>
       </div>
       <div className="input-field-container">
-        <input className="input-field" value={query} onChange={handleChange} />
+        <input
+          className="input-field"
+          value={query}
+          onChange={handleChange}
+          placeholder="Showing all"
+        />
       </div>
       <List
         items={filtered}
