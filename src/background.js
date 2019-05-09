@@ -39,7 +39,7 @@ const middleware = store => next => {
       const exists = urls.find(url => url.id === id);
 
       if (!exists) {
-        storeURLs([...urls, action.payload]);
+        storeURLs([action.payload, ...urls]);
       }
     }
 
