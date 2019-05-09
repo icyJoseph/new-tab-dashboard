@@ -85,6 +85,14 @@ h1 {
   word-wrap: break-word;
 }
 
+.url-timestamp {
+  text-align: right;
+  font-style: italic;
+  font-size: 1em;
+  font-weight: 300;
+  word-wrap: break-word;
+}
+
 .favorites-container {
   display: flex;
   justify-content: center;

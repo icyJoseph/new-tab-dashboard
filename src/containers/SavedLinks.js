@@ -6,6 +6,21 @@ import { openURL } from "../chrome-utils";
 import openLink from "../assets/open-link.png";
 import deleteLink from "../assets/delete-link.png";
 
+const fixed = num => num.toFixed();
+
+const toMinutes = timestamp => Math.floor(Date.now() - timestamp) / (60 * 1000);
+
+const displayTimestamp = timestamp => {
+  const minutes = fixed(toMinutes(timestamp));
+
+  if (minutes > 3600) {
+    const hours = fixed(minutes / 60);
+    return `${hours} hours ago`;
+  }
+
+  return `${minutes} minutes ago`;
+};
+
 export function SavedLinks() {
   const urls = useUrls();
   const getSaved = useGetAll();
@@ -40,7 +55,7 @@ export function SavedLinks() {
       </div>
       <List
         items={filtered}
-        renderer={({ id, url, title }) => (
+        renderer={({ id, url, title, timestamp }) => (
           <div key={id} className="list-item">
             <div className="url-container">
               <p className="url-text">{title || url}</p>
@@ -48,6 +63,9 @@ export function SavedLinks() {
             <div>
               <Button type={openLink} callback={openURL(url)} />
               <Button type={deleteLink} callback={useDelete(id)} />
+            </div>
+            <div>
+              <p className="url-timestamp">{displayTimestamp(timestamp)}</p>
             </div>
           </div>
         )}
