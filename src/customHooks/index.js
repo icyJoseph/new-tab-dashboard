@@ -7,7 +7,7 @@ import { SAVE, GET_ALL, DELETE } from "../ducks/store";
 // Selectors
 export function useUrls() {
   const { state } = useContext(State);
-  return state.urls;
+  return state.urls || [];
 }
 
 export function useAlreadySaved(currentUrl) {

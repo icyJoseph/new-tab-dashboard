@@ -23,7 +23,7 @@ const middleware = store => next => {
     // when a change is detected, dispatch that to the store
     store.dispatch({ type: STORE_CHANGE, payload: newValue });
   };
-  // attack the listener
+  // attach the listener
   addURLsChangeListener(changeListener);
 
   // TODO: use switch case
@@ -52,6 +52,12 @@ const middleware = store => next => {
   };
 };
 
-const reduxStore = createStore(reducer, undefined, applyMiddleware(middleware));
-
-wrapStore(reduxStore);
+chrome.storage.local.get(["urls"], ({ urls }) => {
+  console.debug("Loaded initial state", JSON.stringify(urls));
+  const reduxStore = createStore(
+    reducer,
+    { urls },
+    applyMiddleware(middleware)
+  );
+  wrapStore(reduxStore);
+});
