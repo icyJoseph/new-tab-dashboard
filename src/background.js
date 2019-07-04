@@ -8,14 +8,7 @@ import reducer, {
   STORE_CHANGE
 } from "./redux-store";
 
-// TODO: move to API folder
-const storeURLs = urls => chrome.storage.local.set({ urls });
-
-const getURLs = callback =>
-  chrome.storage.local.get(["urls"], ({ urls }) => callback(urls));
-
-const addURLsChangeListener = listener =>
-  chrome.storage.onChanged.addListener(listener);
+import { storURLs, getURLs, addURLsChangeListener } from "./data/chrome-utils";
 
 const middleware = store => next => {
   // TODO: move out
@@ -52,6 +45,7 @@ const middleware = store => next => {
   };
 };
 
+// to get the initial state, summon the URLS
 chrome.storage.local.get(["urls"], ({ urls }) => {
   console.debug("Loaded initial state", JSON.stringify(urls));
   const reduxStore = createStore(
