@@ -1,10 +1,9 @@
 import React, { useReducer, useEffect } from "react";
-import { State } from "context-hook-provider";
-import Button from "../components/Button";
 import Icon from "../components/Icon";
-import { useSave, useAlreadySaved } from "../customHooks";
-import addLink from "../assets/add-link.png";
-import check from "../assets/check.png";
+import Button from "../../common/Button";
+import { useSave, useAlreadySaved } from "../../../hooks";
+import addLink from "../../../assets/add-link.png";
+import check from "../../../assets/check.png";
 
 const initialState = { ready: false };
 const reducer = (state, nextState) => ({ ...state, ...nextState });

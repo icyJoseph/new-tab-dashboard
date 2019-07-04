@@ -13,8 +13,8 @@ function htmlPlugin({ template, chunks, filename }) {
 module.exports = {
   entry: {
     background: path.join(__dirname, "src/background.js"),
-    newtab: path.join(__dirname, "src/newtab.js"),
-    popup: path.join(__dirname, "src/popup.js")
+    newtab: path.join(__dirname, "src/ui/newtab/newtab.js"),
+    popup: path.join(__dirname, "src/ui/popup/popup.js")
   },
   output: {
     path: path.join(__dirname, "extension"),
@@ -44,18 +44,18 @@ module.exports = {
   },
   plugins: [
     htmlPlugin({
-      template: "src/popup.html",
+      template: "src/ui/popup/popup.html",
       chunks: ["popup"],
       filename: "popup.html"
     }),
     htmlPlugin({
-      template: "src/newtab.html",
+      template: "src/ui/newtab/newtab.html",
       chunks: ["newtab"],
       filename: "newtab.html"
     }),
     new CopyPlugin([
       {
-        from: "src/icon_128.png",
+        from: "src/assets/icon_128.png",
         to: "icon_128.png",
         toType: "file"
       },

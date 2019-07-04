@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import List from "../components/List";
-import Button from "../components/Button";
-import { useUrls, useGetAll, useDelete } from "../customHooks";
-import { openURL } from "../chrome-utils";
-import openLink from "../assets/open-link.png";
-import deleteLink from "../assets/delete-link.png";
+import Button from "../../common/Button";
+import { openURL } from "../../../data/chrome-utils";
+import { useUrls, useGetAll, useDelete } from "../../../hooks";
+import openLink from "../../../assets/open-link.png";
+import deleteLink from "../../../assets/delete-link.png";
 
 const fixed = num => num.toFixed();
 

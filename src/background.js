@@ -6,7 +6,7 @@ import reducer, {
   SAVE,
   DELETE,
   STORE_CHANGE
-} from "./ducks/store";
+} from "./redux-store";
 
 // TODO: move to API folder
 const storeURLs = urls => chrome.storage.local.set({ urls });

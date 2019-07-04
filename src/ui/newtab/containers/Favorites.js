@@ -1,9 +1,9 @@
 import React from "react";
-import { openURL } from "../chrome-utils";
-import github from "../assets/github.png";
-import gmail from "../assets/gmail.png";
-import homepage from "../assets/homepage.png";
-import bus from "../assets/bus.png";
+import { openURL } from "../../../data/chrome-utils";
+import github from "../../../assets/github.png";
+import gmail from "../../../assets/gmail.png";
+import homepage from "../../../assets/homepage.png";
+import bus from "../../../assets/bus.png";
 
 const favorites = [
   { id: "github", url: "https://github.com/icyJoseph", icon: github },

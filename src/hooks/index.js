@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { State } from "context-hook-provider";
-import { SAVE, GET_ALL, DELETE } from "../ducks/store";
+import { SAVE, GET_ALL, DELETE } from "../redux-store";
 
 // TODO: Migrate to react-redux 7
 
