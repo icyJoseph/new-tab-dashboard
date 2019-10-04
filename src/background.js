@@ -8,7 +8,7 @@ import reducer, {
   STORE_CHANGE
 } from "./redux-store";
 
-import { storURLs, getURLs, addURLsChangeListener } from "./data/chrome-utils";
+import { storeURLs, getURLs, addURLsChangeListener } from "./data/chrome-utils";
 
 const middleware = store => next => {
   // TODO: move out
