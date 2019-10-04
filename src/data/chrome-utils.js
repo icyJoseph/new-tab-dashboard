@@ -1,5 +1,5 @@
 // helper function open a URL
-export const openURL = newURL => () => chrome.tabs.create({ url: newURL });
+export const openURL = newURL => () => chrome.tabs.update({ url: newURL });
 
 // helper function to store to the chrome local storage
 export const storeURLs = urls => chrome.storage.local.set({ urls });
